@@ -24,15 +24,25 @@
 	"config": {
 		"vendor-dir": "Vendor"
 	},
+	"repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/sitex/expander"
+        }
+    ],
 	"require": {
 		"php": ">=5.3.10",
 		"croogo/croogo": "~2.0",
-		"cakephp/cakephp": "~2.4"
+		"cakephp/cakephp": "~2.4",
+		"sitex/expander": "*"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "3.7.*@dev"
 	},
 	"scripts": {
-		"post-install-cmd": "Console/cake install.install -d mysql -h localhost -l croogo -p croogo -n croogo -t 3306 -x crg_ admin 123456"
+		"post-update-cmd: [
+			"Console/cake install.install -d mysql -h localhost -l croogo -p croogo -n croogo -t 3306 -x crg_ admin 123456",
+			"Console/cake croogo.ext activate plugin Expander"
+		]
 	}
 }
